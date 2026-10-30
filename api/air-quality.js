@@ -10,12 +10,13 @@ export default async function handler(req, res) {
 
   if (!API_KEY) {
     return res.status(500).json({
-      error: "API 키가 설정되지 않았습니다."
+      error: "Vercel 환경변수에 API 키가 없습니다."
     });
   }
 
+  // 기존에 정상 작동했던 에어코리아 API 주소
   const API_URL =
-    "https://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesure";
+    "https://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty";
 
   const params = new URLSearchParams({
     serviceKey: API_KEY,
@@ -31,13 +32,23 @@ export default async function handler(req, res) {
       `${API_URL}?${params.toString()}`
     );
 
+    const data = await response.json();
+
+    console.log("에어코리아 응답:", data);
+
     if (!response.ok) {
       return res.status(502).json({
-        error: "에어코리아 API 요청에 실패했습니다."
+        error: "에어코리아 API 요청 실패",
+        details: data
       });
     }
 
-    const data = await response.json();
+    if (!data?.response?.body?.items) {
+      return res.status(502).json({
+        error: "에어코리아 응답에 대기질 데이터가 없습니다.",
+        details: data
+      });
+    }
 
     return res.status(200).json(data);
 
