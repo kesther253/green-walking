@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f8f3">
+  <meta name="description" content="그린워킹이 활용하는 대기질·도시공원·지도 데이터와 분석 과정을 소개합니다.">
+  <title>서비스 안내 | 그린워킹</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="data-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="그린워킹 홈">
+        <span class="brand-mark" aria-hidden="true">g</span>
+        <span>green<span class="brand-light">walking</span></span>
+      </a>
+      <nav class="main-nav" aria-label="주요 메뉴">
+        <a href="index.html">홈</a>
+        <a href="route.html">경로 추천</a>
+        <a class="active" href="data.html" aria-current="page">서비스 안내</a>
+      </nav>
+      <a class="header-cta" href="route.html">산책 경로 찾기 <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main>
+    <section class="data-hero">
+      <div class="data-hero-inner">
+        <div class="data-hero-copy">
+          <span class="eyebrow"><span class="eyebrow-dot"></span> ABOUT GREEN WALKING</span>
+          <h1>걷는 길을 살피고,<br><em>도시의 초록을 연결합니다.</em></h1>
+          <p>그린워킹은 대기질 정보와 도시공원 데이터를 활용해<br class="desktop-break"> 일상 속 산책 환경을 더 쉽게 살펴볼 수 있도록 돕습니다.</p>
+          <a class="primary-button" href="route.html">내 산책 경로 확인하기 <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="data-hero-art" aria-hidden="true">
+          <div class="data-orbit orbit-one"></div><div class="data-orbit orbit-two"></div>
+          <div class="data-hero-leaf leaf-a">✦</div><div class="data-hero-leaf leaf-b">❋</div>
+          <div class="data-hero-center"><span>GREEN</span><strong>WALK</strong><small>DATA · NATURE · WALK</small></div>
+          <div class="data-float data-float-top"><span>01</span> AIR QUALITY</div>
+          <div class="data-float data-float-bottom"><span>02</span> URBAN GREEN</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="data-intro content-section">
+      <div class="data-section-heading">
+        <span class="section-kicker">WHY GREEN WALKING</span>
+        <h2>산책을 선택할 때,<br>환경 정보도 함께 확인할 수 있도록</h2>
+        <p>산책 경로를 찾는 데 필요한 위치 정보뿐 아니라 주변 대기질과 공원 정보를 함께 보여주는 것이 그린워킹의 목표입니다.</p>
+      </div>
+      <div class="data-value-grid">
+        <article class="data-value-card"><span class="data-card-number">01</span><div class="data-value-icon">◌</div><h3>대기질 확인</h3><p>에어코리아 측정소의 미세먼지 정보를 확인해 현재 대기 환경을 살펴봅니다.</p></article>
+        <article class="data-value-card"><span class="data-card-number">02</span><div class="data-value-icon">♧</div><h3>주변 녹지 탐색</h3><p>성동구 도시공원 위치를 지도에 표시하고 현재 위치 또는 경로 주변 공원을 찾습니다.</p></article>
+        <article class="data-value-card"><span class="data-card-number">03</span><div class="data-value-icon">⌁</div><h3>도보 경로 확인</h3><p>출발지와 도착지를 검색해 도보 경로와 예상 거리·소요 시간을 확인합니다.</p></article>
+      </div>
+    </section>
+
+    <section class="data-sources-band">
+      <div class="content-section data-sources">
+        <div class="data-section-heading">
+          <span class="section-kicker">DATA SOURCES</span>
+          <h2>그린워킹은 이런 데이터를 사용합니다.</h2>
+          <p>공공데이터와 오픈스트리트맵 기반의 위치·경로 정보를 조합합니다.</p>
+        </div>
+        <div class="data-source-list">
+          <article class="data-source-card">
+            <div class="source-icon source-air">AIR</div>
+            <div class="source-main"><div class="source-topline"><span>01 / AIR QUALITY</span><span class="source-tag">실시간 조회</span></div><h3>에어코리아 대기오염정보</h3><p>한국환경공단 에어코리아 OpenAPI를 통해 서울 지역 측정소의 대기오염 정보를 조회합니다.</p><div class="source-chips"><span>PM10</span><span>PM2.5</span><span>측정 시각</span><span>등급</span></div></div>
+            <div class="source-detail"><strong>활용 데이터</strong><span>미세먼지 농도 및 측정소 정보</span></div>
+          </article>
+          <article class="data-source-card">
+            <div class="source-icon source-park">PARK</div>
+            <div class="source-main"><div class="source-topline"><span>02 / URBAN PARKS</span><span class="source-tag">공원 위치 데이터</span></div><h3>서울특별시 성동구 도시공원정보</h3><p>제공받은 공원 데이터를 JSON으로 가공해 공원명, 유형, 주소, 좌표, 면적을 지도와 검색 기능에 활용합니다.</p><div class="source-chips"><span>공원명</span><span>위도·경도</span><span>공원 유형</span><span>면적</span></div></div>
+            <div class="source-detail"><strong>활용 데이터</strong><span>성동구 공원 48곳</span></div>
+          </article>
+          <article class="data-source-card">
+            <div class="source-icon source-map">MAP</div>
+            <div class="source-main"><div class="source-topline"><span>03 / MAP & ROUTING</span><span class="source-tag">오픈 데이터</span></div><h3>OpenStreetMap 기반 지도·경로</h3><p>OpenStreetMap 지도를 표시하고 Nominatim 장소 검색 및 도보 경로 서비스를 이용해 위치와 경로를 확인합니다.</p><div class="source-chips"><span>지도 타일</span><span>장소 검색</span><span>도보 경로</span></div></div>
+            <div class="source-detail"><strong>활용 데이터</strong><span>지도·장소 좌표·경로 좌표</span></div>
+          </article>
+        </div>
+        <p class="data-source-note">※ 외부 데이터 제공처의 운영 상태와 갱신 시점에 따라 조회 결과가 달라질 수 있습니다.</p>
+      </div>
+    </section>
+
+    <section class="content-section data-process">
+      <div class="data-section-heading centered-heading">
+        <span class="section-kicker">HOW IT WORKS</span>
+        <h2>데이터가 산책 정보가 되기까지</h2>
+        <p>서로 다른 데이터를 수집하고 가공해 사용자가 이해하기 쉬운 정보로 보여줍니다.</p>
+      </div>
+      <div class="process-flow">
+        <article class="process-step"><span>STEP 01</span><div class="process-icon">↓</div><h3>데이터 수집</h3><p>대기질 API, 공원 JSON, 지도·경로 서비스를 호출합니다.</p></article>
+        <div class="process-connector" aria-hidden="true">→</div>
+        <article class="process-step"><span>STEP 02</span><div class="process-icon">⌘</div><h3>데이터 가공</h3><p>응답 데이터를 필요한 항목으로 정리하고 좌표 정보를 활용합니다.</p></article>
+        <div class="process-connector" aria-hidden="true">→</div>
+        <article class="process-step"><span>STEP 03</span><div class="process-icon">⌖</div><h3>위치 기반 분석</h3><p>현재 위치와 경로를 기준으로 가까운 공원 정보를 탐색합니다.</p></article>
+        <div class="process-connector" aria-hidden="true">→</div>
+        <article class="process-step"><span>STEP 04</span><div class="process-icon">✓</div><h3>정보 시각화</h3><p>지도, 거리, 측정값과 공원 목록을 화면에 표시합니다.</p></article>
+      </div>
+    </section>
+
+    <section class="content-section data-notice-wrap">
+      <div class="data-notice">
+        <div class="notice-symbol">i</div>
+        <div><span class="section-kicker">DATA & SERVICE NOTICE</span><h2>정보를 확인할 때 참고해 주세요.</h2><ul><li>대기질은 측정소에서 관측된 값이며 사용자의 정확한 위치나 산책 경로 전체의 실측값을 의미하지 않습니다.</li><li>공원과 경로 사이의 거리는 경로 좌표를 이용한 근사치이며 실제 보행 동선이나 출입구까지의 거리는 다를 수 있습니다.</li><li>현재 서비스는 대기질과 공원 정보를 각각 제공하며, 두 요소를 결합한 종합 쾌적도 점수는 아직 제공하지 않습니다.</li><li>장소 검색과 경로 안내는 외부 오픈 서비스에 의존하므로 일시적으로 응답이 지연되거나 실패할 수 있습니다.</li></ul></div>
+      </div>
+    </section>
+
+    <section class="content-section data-cta-wrap">
+      <div class="data-cta"><div><span class="section-kicker">READY TO WALK?</span><h2>오늘 걸을 길을 찾아보세요.</h2><p>출발지와 도착지를 입력하고 주변 공원 정보를 확인해 보세요.</p></div><a class="banner-button" href="route.html">산책 경로 검색하기 <span aria-hidden="true">→</span></a><span class="data-cta-decoration" aria-hidden="true">✳</span></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="footer-inner"><a class="brand footer-brand" href="index.html"><span class="brand-mark">g</span><span>green<span class="brand-light">walking</span></span></a><p>대기질과 녹지를 잇는 더 쾌적한 산책.</p><span>GREEN WALKING · SEONGDONG-GU</span></div></footer>
+</body>
+</html>

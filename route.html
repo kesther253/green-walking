@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f8f3">
+    <meta name="description" content="출발지와 도착지를 입력하고 주변 공원 및 산책 경로 쾌적도를 확인하는 그린워킹">
+    <title>산책 경로 추천 | 그린워킹</title>
+
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://tile.openstreetmap.org">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+
+<body class="route-page">
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="index.html" aria-label="그린워킹 홈">
+                <span class="brand-mark" aria-hidden="true">g</span>
+                <span>green<span class="brand-light">walking</span></span>
+            </a>
+
+            <nav class="main-nav" aria-label="주요 메뉴">
+                <a href="index.html">홈</a>
+                <a class="active" href="route.html" aria-current="page">경로 추천</a>
+                <a href="data.html">서비스 안내</a>
+            </nav>
+
+            <a class="header-cta" href="index.html">
+                메인으로 <span aria-hidden="true">↗</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+
+        <section class="route-hero">
+            <div class="route-hero-inner">
+                <div>
+                    <span class="eyebrow">
+                        <span class="eyebrow-dot"></span>
+                        WALK ROUTE FINDER
+                    </span>
+
+                    <h1>
+                        목적지까지 가는 길,<br>
+                        <em>조금 더 푸르게.</em>
+                    </h1>
+
+                    <p>
+                        출발지와 도착지를 입력하면 도보 경로와<br class="desktop-break">
+                        주변 공원 정보를 한눈에 확인할 수 있어요.
+                    </p>
+                </div>
+
+                <div class="route-hero-stamp" aria-hidden="true">
+                    <span>GREEN</span>
+                    <strong>WALK</strong>
+                    <i>✳</i>
+                </div>
+            </div>
+        </section>
+
+        <section class="route-content" aria-labelledby="route-search-title">
+
+            <div class="route-search-card">
+                <div class="route-card-heading">
+                    <div>
+                        <span class="section-kicker">PLAN YOUR WALK</span>
+                        <h2 id="route-search-title">어디로 산책할까요?</h2>
+                        <p>성동구 내 장소를 입력해 주세요.</p>
+                    </div>
+
+                    <span class="route-step">
+                        01 <span>/ 검색</span>
+                    </span>
+                </div>
+
+                <div class="route-inputs">
+                    <div class="route-field">
+                        <label for="start-point">
+                            <span class="field-dot start-dot"></span>
+                            출발지
+                        </label>
+
+                        <input
+                            type="text"
+                            id="start-point"
+                            placeholder="예: 왕십리역"
+                            autocomplete="off"
+                        >
+                    </div>
+
+                    <div class="route-direction" aria-hidden="true">→</div>
+
+                    <div class="route-field">
+                        <label for="end-point">
+                            <span class="field-dot end-dot"></span>
+                            도착지
+                        </label>
+
+                        <input
+                            type="text"
+                            id="end-point"
+                            placeholder="예: 서울숲"
+                            autocomplete="off"
+                        >
+                    </div>
+                </div>
+
+                <div class="route-search-bottom">
+                    <p>
+                        <span aria-hidden="true">ⓘ</span>
+                        현재 장소 검색은 서울 성동구를 기준으로 합니다.
+                    </p>
+
+                    <button
+                        id="search-route-btn"
+                        class="primary-button route-submit"
+                        type="button"
+                    >
+                        산책 경로 찾기
+                        <span aria-hidden="true">→</span>
+                    </button>
+                </div>
+            </div>
+
+            <section class="route-map-section" aria-labelledby="route-map-title">
+                <div class="route-section-heading">
+                    <div>
+                        <span class="section-kicker">YOUR WALKING MAP</span>
+                        <h2 id="route-map-title">산책 경로 지도</h2>
+                        <p>검색한 경로와 출발지·도착지 위치를 지도에서 확인하세요.</p>
+                    </div>
+
+                    <span class="map-live-pill">
+                        <span></span>
+                        MAP VIEW
+                    </span>
+                </div>
+
+                <div class="route-map-frame">
+                    <div id="route-map" aria-label="산책 경로 지도"></div>
+
+                    <div class="route-map-caption">
+                        <span><i class="legend-start"></i> 출발지</span>
+                        <span><i class="legend-end"></i> 도착지</span>
+                        <span><i class="legend-route"></i> 산책 경로</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="route-result-section" aria-labelledby="route-result-title">
+                <div class="route-section-heading">
+                    <div>
+                        <span class="section-kicker">ROUTE INSIGHTS</span>
+                        <h2 id="route-result-title">경로 분석 결과</h2>
+                        <p>이동 정보와 주변 녹지 정보를 함께 살펴보세요.</p>
+                    </div>
+
+                    <span class="route-step">
+                        02 <span>/ 분석</span>
+                    </span>
+                </div>
+
+                <div id="route-result" aria-live="polite">
+                    <div class="route-empty-state">
+                        <span class="route-empty-icon" aria-hidden="true">⌁</span>
+                        <strong>아직 분석된 경로가 없어요.</strong>
+                        <p>
+                            위에서 출발지와 도착지를 입력하고<br>
+                            산책 경로를 검색해 보세요.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <a class="brand footer-brand" href="index.html">
+                <span class="brand-mark">g</span>
+                <span>green<span class="brand-light">walking</span></span>
+            </a>
+
+            <p>대기질과 녹지를 잇는 더 쾌적한 산책.</p>
+            <span>GREEN WALKING · SEONGDONG-GU</span>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/route.js"></script>
+
+</body>
+</html>
