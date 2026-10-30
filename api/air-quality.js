@@ -1,5 +1,24 @@
 
 export default async function handler(req, res) {
+  // GitHub Pages에서 API를 호출할 수 있도록 CORS 설정
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://kesther253.github.io"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, OPTIONS"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Content-Type"
+  );
+
+  // 브라우저의 사전 요청 처리
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
   if (req.method !== "GET") {
     return res.status(405).json({
       error: "허용되지 않은 요청입니다."
@@ -14,7 +33,6 @@ export default async function handler(req, res) {
     });
   }
 
-  // 기존에 정상 작동했던 에어코리아 API 주소
   const API_URL =
     "https://apis.data.go.kr/B552584/ArpltnInforInqireSvc/getCtprvnRltmMesureDnsty";
 
@@ -34,19 +52,9 @@ export default async function handler(req, res) {
 
     const data = await response.json();
 
-    console.log("에어코리아 응답:", data);
-
-    if (!response.ok) {
+    if (!response.ok || !data?.response?.body?.items) {
       return res.status(502).json({
-        error: "에어코리아 API 요청 실패",
-        details: data
-      });
-    }
-
-    if (!data?.response?.body?.items) {
-      return res.status(502).json({
-        error: "에어코리아 응답에 대기질 데이터가 없습니다.",
-        details: data
+        error: "에어코리아 API 요청 실패"
       });
     }
 

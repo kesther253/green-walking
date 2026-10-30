@@ -1,7 +1,9 @@
 
 async function getAirQuality() {
   try {
-    const response = await fetch("/api/air-quality");
+    const response = await fetch(
+  "https://green-walking-ten.vercel.app/api/air-quality"
+);
 
     if (!response.ok) {
       throw new Error(`HTTP 오류: ${response.status}`);
